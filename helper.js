@@ -1,10 +1,12 @@
-// to do function
-// highest score, overall score, restart button, ending UI, color change indicator
+newGame();
 
-init(cells);
-generate(cells);
-generate(cells);
-display(cells);
+function newGame() {
+    init(cells);
+    generate(cells);
+    generate(cells);
+    display(cells);
+}
+
 
 var keyMap = {
     37: 'left',
@@ -46,3 +48,5 @@ document.addEventListener('keydown', (e) => {
     }
     display(cells);
 }, false);
+
+document.getElementById('btn-new-game').addEventListener('click', newGame, false);

@@ -1,6 +1,6 @@
 var rows = 4;
 var cells = CreateCells(rows);
-var oddOftwo = 8; //1~10,8 means 80% of possibility to generate 2
+var oddOftwo = 8; //1~10, 8 means 80% of possibility to generate 2
 var updated = false;
 
 //create cells map
@@ -24,7 +24,6 @@ function init(arr) {
 }
 
 // select available cell and give value of 2
-// return false while only on cell left in the map
 function generate(arr) {
     var cellsAvailable = [];
 
@@ -233,19 +232,25 @@ function moveOneStep(cell, direction) {
 }
 
 function display(arr) {
+    var score = 0;
+    var scoreHighest = 0;
     for (var i=0;i<arr.length;i++) {
         for (var j=0;j<arr[i].length;j++) {
-
             var id = 'i-' + i + '-' + j;
             var cell = document.getElementById(id);
             if (arr[i][j] === 0) {
                 cell.textContent = '';
             } else {
-                cell.textContent = arr[i][j];
+                cell.textContent = arr[i][j]; //display
+                score += arr[i][j]; //add overall score
+                if (arr[i][j] > scoreHighest) {
+                    scoreHighest = arr[i][j];
+                }
             }
-
         }
     }
+    document.getElementById('orl-score').textContent = 'Score: ' + score;
+    document.getElementById('hst-score').textContent = 'Highest Cell: ' + scoreHighest;
 }
 
 function judger(arr) {
